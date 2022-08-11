@@ -124,6 +124,9 @@ impl RescuePrime {
 
     /// Return a pair of a list of polynomials, first element in the pair,
     /// (first_round_constants[register], second_round_constants[register])
+    /// ^^ This comment is not helpful.
+    /// Rescue-Prime needs 2*N*m round constants, where N is the number of rounds and m is the state size. Every round consists of two steps, and in both steps constants get added into all state elements.
+    /// This function returns a pair of lists of polynomials, (first_step_constants, second_step_constants) such that first_step_constants[i](X) evaluates to the constant in the first step of round i in omicron^i, and analogously for second_step_constants.
     pub fn get_round_constant_polynomials(
         &self,
         omicron: BFieldElement,
